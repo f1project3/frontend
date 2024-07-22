@@ -1,2 +1,8 @@
-This is an F1 app that is built to display F1 players along with their teams and statistics. The app will have a teams page that will display all F1 teams and when the user clicks on the team, it will lead them to a new page dedicated to that specific team. This page would display the team's information, including their recent history, number of driver, standing etc. Not only that, the user would also have the ability to view the current F1 Standings.
-The user would also be able to access a Drivers page which would be built to display all drivers. when the user clicks on the driver, it would send them to a new page that outlines the driver's information, including age, stats, etc.
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
