@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { getDrivers } from '../services/ergastApi';
 import DriverList from '../Components/DriverList';
 
 const DriversPage = () => {
   const [drivers, setDrivers] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/drivers')
-      .then(response => {
-        setDrivers(response.data);
-      })
-      .catch(error => {
-        console.error('There was an error fetching the drivers!', error);
-      });
+    getDrivers().then(setDrivers).catch(console.error);
   }, []);
 
   return (

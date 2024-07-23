@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { getTeams } from '../services/ergastApi';
 import TeamList from '../Components/TeamList';
 
 const TeamsPage = () => {
   const [teams, setTeams] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/teams')
-      .then(response => {
-        setTeams(response.data);
-      })
-      .catch(error => {
-        console.error('There was an error fetching the teams!', error);
-      });
+    getTeams().then(setTeams).catch(console.error);
   }, []);
 
   return (

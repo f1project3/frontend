@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { getDriverDetails } from '../services/ergastApi';
 import DriverDetails from '../Components/DriverDetails';
 
 const DriverDetailsPage = () => {
@@ -8,13 +8,7 @@ const DriverDetailsPage = () => {
   const [driver, setDriver] = useState(null);
 
   useEffect(() => {
-    axios.get(`/api/drivers/${id}`)
-      .then(response => {
-        setDriver(response.data);
-      })
-      .catch(error => {
-        console.error('There was an error fetching the driver!', error);
-      });
+    getDriverDetails(id).then(setDriver).catch(console.error);
   }, [id]);
 
   if (!driver) {

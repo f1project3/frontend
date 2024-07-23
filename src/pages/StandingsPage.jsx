@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { getStandings } from '../services/ergastApi';
 import Standings from '../Components/Standings';
 
 const StandingsPage = () => {
   const [standings, setStandings] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/standings')
-      .then(response => {
-        setStandings(response.data);
-      })
-      .catch(error => {
-        console.error('There was an error fetching the standings!', error);
-      });
+    getStandings().then(setStandings).catch(console.error);
   }, []);
 
   return (
