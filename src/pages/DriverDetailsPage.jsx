@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import DriverDetails from '../components/DriverDetails';
+import DriverDetails from '../Components/DriverDetails';
 
 const DriverDetailsPage = () => {
   const { id } = useParams();
