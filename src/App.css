@@ -29,7 +29,6 @@ body {
   color: white;
   text-align: center;
   padding: 14px 20px;
-  text-decoration: none;
 }
 
 .navbar li a:hover {
@@ -37,5 +36,5 @@ body {
 }
 
 .main-content {
-  padding-top: 60px; /* To ensure content is not hidden behind the navbar */
+  padding-top: 60px; 
 }
