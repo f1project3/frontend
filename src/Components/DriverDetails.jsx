@@ -1,40 +1,45 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-const DriverDetail = (props) => {
-  const params = useParams();
-  const id = params.id;
+const DriverDetails = () => {
+  const { id } = useParams();
   const [driver, setDriver] = useState(null);
-
-  const URL = `http://localhost:4000/drivers/${id}`;
-
-  const getDriver = async () => {
-    const response = await fetch(URL);
-    const data = await response.json();
-    setDriver(data.data);
-  };
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getDriver();
-  }, []);
+    const fetchDriver = async () => {
+      try {
+        const response = await fetch(`https://openf1.org/api/drivers/${id}`);
+        const data = await response.json();
+        setDriver(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching driver data:", error);
+        setLoading(false);
+      }
+    };
 
-  const loaded = () => {
-    return (
-      <div className="driver">
-        <h1>{driver.name}</h1>
-        <h2>{driver.team}</h2>
-        <img src={driver.image} alt={driver.name} />
-        <h3>{driver.nationality}</h3>
-        <p>{driver.championships}</p>
-      </div>
-    );
-  };
+    fetchDriver();
+  }, [id]);
 
-  const loading = () => {
-    return <h1>Loading...</h1>;
-  };
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  return <section>{driver ? loaded() : loading()}</section>;
+  if (!driver) {
+    return <div>Driver not found</div>;
+  }
+
+  return (
+    <div className="driver-details">
+      <h1>{driver.name}</h1>
+      <img src={driver.image} alt={driver.name} />
+      <p>Team: {driver.team}</p>
+      <p>Country: {driver.country}</p>
+      <p>Podiums: {driver.podiums}</p>
+      <p>Points: {driver.points}</p>
+    </div>
+  );
 };
 
-export default DriverDetail;
+export default DriverDetails;
