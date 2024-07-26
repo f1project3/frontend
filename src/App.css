@@ -33,9 +33,9 @@ body {
 }
 
 .navbar li a:hover {
-  background-color: #111;
+  background-color: red;
 }
 
 .main-content {
-  padding-top: 60px; /* To ensure content is not hidden behind the navbar */
+  padding-top: 60px; 
 }
