@@ -12,10 +12,10 @@ const Navbar = () => {
           <Link to="/teams">Teams</Link>
         </li>
         <li>
-          <Link to="/drivers">Drivers</Link>
+          <Link to="/players">Drivers</Link>
         </li>
         <li>
-          <Link to="/standings">Standings</Link>
+          <Link to="/following">Following</Link>
         </li>
       </ul>
     </nav>

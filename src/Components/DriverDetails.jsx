@@ -9,8 +9,7 @@ const DriverDetails = () => {
   useEffect(() => {
     const fetchDriver = async () => {
       try {
-        const response = await fetch(`https://api.openf1.org/v1/drivers/${id}`);
-        const data = await response.json();
+        const response = await fetch(`https://localhost:4000/[players]/${id}`); 
         setDriver(data);
         setLoading(false);
       } catch (error) {

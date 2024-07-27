@@ -17,13 +17,11 @@ const TeamList = () => {
   }, []);
 
   const loaded = () => {
-    return teams.map((team) => (
-      <div key={team._id} className="team">
-        <Link to={`/teams/${team._id}`}>
-          <h1>{team.name}</h1>
+    return teams.map((team, index) => (
+      <div key={index} className="team">
+        <Link to={`/teams/${team.team_name}`}>
+          <h1>{team.team_name}</h1>
         </Link>
-        <img src={team.logo} alt={team.name} />
-        <h3>{team.principal}</h3>
       </div>
     ));
   };

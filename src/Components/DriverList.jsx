@@ -2,14 +2,18 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const DriverList = () => {
-  const [drivers, setDrivers] = useState(null);
+  const [drivers, setPlayers] = useState(null);
 
-  const URL = "https://api.openf1.org/v1/drivers";
+  const URL = "http://localhost:4000/drivers"; 
 
   const getDrivers = async () => {
-    const response = await fetch(URL);
-    const data = await response.json();
-    setDrivers(data);
+    try {
+      const response = await fetch(URL);
+      const data = await response.json();
+      setPlayers(data.data);
+    } catch (error) {
+      console.error("Error fetching drivers:", error);
+    }
   };
 
   useEffect(() => {
@@ -17,13 +21,11 @@ const DriverList = () => {
   }, []);
 
   const loaded = () => {
-    return drivers.map((driver) => (
-      <div key={driver.id} className="driver">
-        <Link to={`/drivers/${driver.id}`}>
-          <h1>{driver.name}</h1>
+    return drivers.map((driver, index) => (
+      <div key={index} className="driver">
+        <Link to={`/drivers/${driver.driver}`}>
+          <h1>{driver.driver.name}</h1>
         </Link>
-        <img src={driver.image} alt={driver.name} />
-        <h3>{driver.team}</h3>
       </div>
     ));
   };
