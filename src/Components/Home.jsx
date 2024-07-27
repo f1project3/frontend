@@ -18,7 +18,7 @@ const Home = () => {
     };
 
     const fetchDrivers = async () => {
-      const response = await fetch('http://localhost:4000/players');
+      const response = await fetch('http://localhost:4000/drivers');
       const data = await response.json();
       setDrivers(data);
     };
