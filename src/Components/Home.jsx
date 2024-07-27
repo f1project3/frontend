@@ -18,7 +18,7 @@ const Home = () => {
     };
 
     const fetchDrivers = async () => {
-      const response = await fetch('http://localhost:4000/drivers');
+      const response = await fetch('http://localhost:4000/driver');
       const data = await response.json();
       setDrivers(data);
     };
@@ -39,8 +39,8 @@ const Home = () => {
         <Route path="/" element={<div>Welcome to the F1 App</div>} />
         <Route path="/teams" element={<TeamList teams={teams} />} />
         <Route path="/teams/:id" element={<TeamDetail teams={teams} />} />
-        <Route path="/drivers" element={<DriverList drivers={drivers} />} />
-        <Route path="/drivers/:id" element={<DriverDetails drivers={drivers} />} />
+        <Route path="/driver" element={<DriverList drivers={drivers} />} />
+        <Route path="/driver/:id" element={<DriverDetails drivers={drivers} />} />
       </Routes>
     </main>
   );

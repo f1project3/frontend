@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const DriverList = () => {
   const [drivers, setDrivers] = useState(null);
-  const URL = "http://localhost:4000/players/";
+  const URL = "http://localhost:4000/driver/";
 
 console.log(drivers)
 
@@ -19,11 +19,11 @@ console.log(drivers)
     getDrivers();
 
   }, []);
-  
+
   const loaded = () => {
     return drivers.map((driver, index) => (
       <div key={index} className="driver">
-        <Link to={`/drivers/${driver._id}`}>
+        <Link to={`/driver/${driver._id}`}>
           <h1>{driver.full_name}</h1>
         </Link>
         <img src={driver.headshot_url} alt={driver.full_name} />
