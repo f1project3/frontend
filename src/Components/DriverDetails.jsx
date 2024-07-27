@@ -9,7 +9,7 @@ const DriverDetails = () => {
   useEffect(() => {
     const fetchDriver = async () => {
       try {
-        const response = await fetch(`https://openf1.org/api/drivers/${id}`);
+        const response = await fetch(`https://api.openf1.org/v1/drivers/${id}`);
         const data = await response.json();
         setDriver(data);
         setLoading(false);

@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import TeamList from "../Components/TeamList";
-import TeamDetail from "../Components/TeamDetail";
-import DriverList from "../Components/DriverList";
-import DriverDetail from "../Components/DriverDetails";
-import Standings from "../Components/Standings";
+import TeamList from "./TeamList";
+import TeamDetail from "./TeamDetail";
+import DriverList from "./DriverList";
+import DriverDetails from "./DriverDetails";
+import Standings from "./Standings";
 
 const Home = () => {
   return (
@@ -13,7 +13,7 @@ const Home = () => {
         <Route path="/teams" element={<TeamList />} />
         <Route path="/teams/:id" element={<TeamDetail />} />
         <Route path="/drivers" element={<DriverList />} />
-        <Route path="/drivers/:id" element={<DriverDetail />} />
+        <Route path="/drivers/:id" element={<DriverDetails />} />
         <Route path="/standings" element={<Standings />} />
       </Routes>
     </main>

@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 const DriverList = () => {
   const [drivers, setDrivers] = useState(null);
 
-  const URL = "http://localhost:4000/drivers/";
+  const URL = "https://api.openf1.org/v1/drivers";
 
   const getDrivers = async () => {
     const response = await fetch(URL);
     const data = await response.json();
-    setDrivers(data.data);
+    setDrivers(data);
   };
 
   useEffect(() => {
@@ -18,8 +18,8 @@ const DriverList = () => {
 
   const loaded = () => {
     return drivers.map((driver) => (
-      <div key={driver._id} className="driver">
-        <Link to={`/drivers/${driver._id}`}>
+      <div key={driver.id} className="driver">
+        <Link to={`/drivers/${driver.id}`}>
           <h1>{driver.name}</h1>
         </Link>
         <img src={driver.image} alt={driver.name} />
