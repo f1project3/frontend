@@ -1,23 +1,18 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const DriverList = () => {
+const DriverList = ({ addFavorite }) => {
   const [drivers, setDrivers] = useState(null);
   const URL = "http://localhost:4000/driver/";
-
-console.log(drivers)
 
   const getDrivers = async () => {
     const response = await fetch(URL);
     const data = await response.json();
-
     setDrivers(data.data);
   };
 
   useEffect(() => {
-
     getDrivers();
-
   }, []);
 
   const loaded = () => {
@@ -28,12 +23,16 @@ console.log(drivers)
         </Link>
         <img src={driver.headshot_url} alt={driver.full_name} />
         <h3>{driver.team}</h3>
+        <button onClick={() => addFavorite('drivers', driver)}>Add to Favorites</button>
       </div>
     ));
   };
+
   const loading = () => {
     return <h1>Loading...</h1>;
   };
+
   return <section>{drivers ? loaded() : loading()}</section>;
 };
+
 export default DriverList;
