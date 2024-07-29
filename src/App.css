@@ -1,7 +1,10 @@
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
+
+
 
 .navbar {
   background-color: red;
@@ -16,12 +19,13 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: space-around;
+  /* display: flex;
+  justify-content: space-around; */
 }
 
 .navbar li {
   display: inline;
+  justify-content: center;
 }
 
 .navbar li a {
@@ -33,6 +37,22 @@ body {
 }
 
 .navbar li a:hover {
-  background-color: rgb(172, 137, 137);
+  background-color: rgb(255, 255, 255);
 }
+
+.team{
+  border: 1px solid red;
+  width: 1000px; 
+height: 100px; 
+padding: 30px;
+margin: 5px; 
+
+
+
+}
+.nav-item{
+  padding: 10px 125px 10px; 
+  margin: .5px; 
+}
+
 

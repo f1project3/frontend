@@ -3,22 +3,24 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
+    <div class="d-md-flex p-2">
+    <nav className="navbar justify-content-evenly">
+      <ul class="nav">
+        <li class="nav-item">
+          <Link to="/" class="nav-link home" aria-current="page" href="#">Home</Link>
         </li>
-        <li>
-          <Link to="/teams">Teams</Link>
+        <li class="nav-item">
+          <Link to="/teams" class="nav-link teams" href="#">Teams</Link>
         </li>
-        <li>
-          <Link to="/driver">Drivers</Link>
+        <li class="nav-item">
+          <Link to="/driver" class="nav-link drivers" href="#">Drivers</Link>
         </li>
-        <li>
-          <Link to="/following">Following</Link>
+        <li class="nav-item"> 
+          <Link to="/following" class="nav-link following" href="#">Following</Link>
         </li>
       </ul>
     </nav>
+    </div>
   );
 };
 
