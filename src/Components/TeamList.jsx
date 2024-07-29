@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const TeamList = () => {
+const TeamList = ({ addFavorite }) => {
   const [teams, setTeams] = useState(null);
-
   const URL = "http://localhost:4000/teams/";
 
   const getTeams = async () => {
@@ -22,6 +21,7 @@ const TeamList = () => {
         <Link to={`/teams/${team.team_name}`}>
           <h1>{team.team_name}</h1>
         </Link>
+        <button onClick={() => addFavorite('teams', team)}>Add to Favorites</button>
       </div>
     ));
   };
