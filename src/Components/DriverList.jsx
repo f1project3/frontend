@@ -1,20 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const DriverList = ({ addFavorite }) => {
-  const [drivers, setDrivers] = useState(null);
-  const URL = "http://localhost:4000/driver/";
-
-  const getDrivers = async () => {
-    const response = await fetch(URL);
-    const data = await response.json();
-    setDrivers(data.data);
-  };
-
-  useEffect(() => {
-    getDrivers();
-  }, []);
-
+const DriverList = ({ drivers, addFavorite }) => {
   const loaded = () => {
     return drivers.map((driver, index) => (
       <div key={index} className="driver">

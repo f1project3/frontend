@@ -38,19 +38,37 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
-.team{
-  border: 1px solid red;
-  width: 1000px; 
-height: 100px; 
-padding: 30px;
-margin: 5px; 
-
-
-
-}
-.nav-item{
-  padding: 10px 125px 10px; 
-  margin: .5px; 
+.Toastify__toast--success {
+  background-color: green;
 }
 
+.Toastify__toast--error {
+  background-color: red;
+}
 
+.favorite-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.favorite-item h3 {
+  margin: 0;
+}
+
+.favorite-item button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #ff4c4c;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.favorite-item button:hover {
+  background-color: #ff1a1a;
+}

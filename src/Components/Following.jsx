@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Following = ({ favorites }) => {
+const Following = ({ favorites, removeFavorite }) => {
   const loaded = () => {
     return (
       <div>
@@ -11,6 +11,7 @@ const Following = ({ favorites }) => {
             <Link to={`/teams/${team.team_name}`}>
               <h1>{team.team_name}</h1>
             </Link>
+            <button onClick={() => removeFavorite('teams', team._id)}>Remove from favorites</button>
           </div>
         ))}
         <h1>Favorite Drivers</h1>
@@ -19,6 +20,7 @@ const Following = ({ favorites }) => {
             <Link to={`/driver/${driver._id}`}>
               <h1>{driver.full_name}</h1>
             </Link>
+            <button onClick={() => removeFavorite('drivers', driver._id)}>Remove from favorites</button>
           </div>
         ))}
       </div>
@@ -29,7 +31,7 @@ const Following = ({ favorites }) => {
     return <h1>No favorites added yet.</h1>;
   };
 
-  return <section>{favorites ? loaded() : loading()}</section>;
+  return <section>{favorites.teams.length > 0 || favorites.drivers.length > 0 ? loaded() : loading()}</section>;
 };
 
 export default Following;

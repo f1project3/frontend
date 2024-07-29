@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import TeamList from './TeamList';
 import TeamDetail from './TeamDetail';
 import DriverList from './DriverList';
@@ -31,10 +33,16 @@ const Home = () => {
   }, []);
 
   const addFavorite = (type, item) => {
+    if (favorites[type].some(favorite => favorite._id === item._id)) {
+      toast.warn(`${item.full_name || item.team_name} is already in favorites!`);
+      return;
+    }
+
     setFavorites((prev) => ({
       ...prev,
       [type]: [...prev[type], item],
     }));
+    toast.success(`${item.full_name || item.team_name} has been added to favorites!`);
   };
 
   const removeFavorite = (type, id) => {
@@ -42,6 +50,7 @@ const Home = () => {
       ...prev,
       [type]: prev[type].filter((item) => item._id !== id),
     }));
+    toast.info(`${type === 'drivers' ? 'Driver' : 'Team'} has been removed from favorites.`);
   };
 
   if (loading) {
@@ -50,13 +59,14 @@ const Home = () => {
 
   return (
     <main>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<div>Welcome to the F1 App</div>} />
         <Route path="/teams" element={<TeamList teams={teams} addFavorite={addFavorite} />} />
         <Route path="/teams/:id" element={<TeamDetail teams={teams} />} />
         <Route path="/driver" element={<DriverList drivers={drivers} addFavorite={addFavorite} />} />
         <Route path="/driver/:id" element={<DriverDetails drivers={drivers} />} />
-        <Route path="/following" element={<Following favorites={favorites} />} />
+        <Route path="/following" element={<Following favorites={favorites} removeFavorite={removeFavorite} />} />
       </Routes>
     </main>
   );

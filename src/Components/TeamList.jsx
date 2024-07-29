@@ -1,20 +1,8 @@
+
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const TeamList = ({ addFavorite }) => {
-  const [teams, setTeams] = useState(null);
-  const URL = "http://localhost:4000/teams/";
-
-  const getTeams = async () => {
-    const response = await fetch(URL);
-    const data = await response.json();
-    setTeams(data.data);
-  };
-
-  useEffect(() => {
-    getTeams();
-  }, []);
-
+const TeamList = ({ teams, addFavorite }) => {
   const loaded = () => {
     return teams.map((team, index) => (
       <div key={index} className="team">
@@ -34,3 +22,4 @@ const TeamList = ({ addFavorite }) => {
 };
 
 export default TeamList;
+
