@@ -2,10 +2,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+
+
 const TeamList = ({ teams, addFavorite }) => {
   const loaded = () => {
     return teams.map((team, index) => (
-      <div key={index} className="team">
+      <div key={index} className="teamList">
         <Link to={`/teams/${team.team_name}`}>
           <h1>{team.team_name}</h1>
         </Link>

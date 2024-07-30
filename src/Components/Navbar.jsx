@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div class="d-md-flex p-2">
-    <nav className="navbar justify-content-evenly">
+    <div class="d-lg-flex">
+    <nav className="navbar">
       <ul class="nav">
         <li class="nav-item">
           <Link to="/" class="nav-link home" aria-current="page" href="#">Home</Link>

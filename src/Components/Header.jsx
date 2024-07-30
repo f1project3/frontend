@@ -2,7 +2,8 @@
 
 const Header = (props) => {
   return (
-    <nav className='nav'>
+    <nav className='logoNav'>
+      <img src="./src/assets/photos/f1_logo.png" alt="f1 logo"/>
     </nav>
   );
 };
