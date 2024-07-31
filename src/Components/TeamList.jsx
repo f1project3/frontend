@@ -20,11 +20,11 @@ const TeamList = ({ addFavorite, teams, deleteTeam }) => {
     return filteredTeams.map((team, index) => (
       <div key={index} className="team">
         <Link to={`/teams/${team._id}`}>
-          <h1>{team.team_name}</h1>
+          <h1 >{team.team_name}</h1>
         </Link>
         <button onClick={() => handleAddFavorite(team)}>Add to Favorites</button>
         <button onClick={() => handleDelete(team._id)}>Delete Team</button>
-      </div>
+        </div>
     ));
   };
 

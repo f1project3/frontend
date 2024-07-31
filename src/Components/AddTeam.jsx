@@ -12,8 +12,8 @@ const AddTeam = ({ addTeam }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Add New Team</h2>
-      <input
+      <h2 class="addTeam">Add New Team</h2>
+      <input id="addTeamName"
         type="text"
         placeholder="Team Name"
         value={teamName}
@@ -23,6 +23,7 @@ const AddTeam = ({ addTeam }) => {
       <button type="submit">Add Team</button>
     </form>
   );
+
 };
 
 export default AddTeam;
