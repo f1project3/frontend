@@ -5,7 +5,7 @@ const UpdateTeamForm = ({ updateTeam }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [team, setTeam] = useState({
-    name: '',
+    team_name: '',
   });
 
   useEffect(() => {
@@ -46,8 +46,8 @@ const UpdateTeamForm = ({ updateTeam }) => {
         Team Name:
         <input
           type="text"
-          name="name"
-          value={team.name}
+          name="team_name"
+          value={team.team_name}
           onChange={handleChange}
           required
         />

@@ -1,18 +1,17 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-
-const TeamDetail = (teams) => {
+const TeamDetail = ({ teams }) => {
   const { id } = useParams();
-  const [team, setTeam] = useState(teams);
+  const [team, setTeam] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [updatedTeam, setUpdatedTeam] = useState({
-    name: '',
+    team_name: '',
   });
 
   const URL = `http://localhost:4000/teams/${id}`;
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const getTeam = async () => {
     try {
@@ -21,7 +20,7 @@ const TeamDetail = (teams) => {
       const data = await response.json();
       setTeam(data.data);
       setUpdatedTeam({
-        name: data.team_name,
+        team_name: data.data.team_name,
       });
     } catch (error) {
       console.error("Error fetching team:", error);
@@ -50,10 +49,10 @@ const TeamDetail = (teams) => {
       });
       if (!response.ok) throw new Error('Failed to update team');
       const data = await response.json();
-      setTeam(data);
+      setTeam(data.data);
       setIsEditing(false);
       console.log('Update successful:', data);
-      navigate("/teams")
+      navigate("/teams");
     } catch (error) {
       console.error("Error updating team:", error);
     }
@@ -62,7 +61,7 @@ const TeamDetail = (teams) => {
   const loaded = () => {
     return (
       <div className="team">
-        <h1>{team.name}</h1>
+        <h1>{team.team_name}</h1>
         <button onClick={() => setIsEditing(true)}>Edit Team</button>
         {isEditing && (
           <form onSubmit={handleUpdate}>
@@ -70,8 +69,8 @@ const TeamDetail = (teams) => {
               Team Name:
               <input
                 type="text"
-                name="name"
-                value={updatedTeam.name}
+                name="team_name"
+                value={updatedTeam.team_name}
                 onChange={handleInputChange}
                 required
               />
