@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Following = ({ favorites, removeFavorite }) => {
   const loaded = () => {
     return (
-      <div>
+      <div classname="following">
         <h1>Favorite Teams</h1>
         {favorites.teams.map((team, index) => (
           <div key={index} className="team">
@@ -33,7 +33,7 @@ const Following = ({ favorites, removeFavorite }) => {
   };
 
   const loading = () => {
-    return <h1>No favorites added yet.</h1>;
+    return <h1 className='noFaves'>No favorites added yet.</h1>;
   };
 
   return <section>{favorites.teams.length > 0 || favorites.drivers.length > 0 ? loaded() : loading()}</section>;

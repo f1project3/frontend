@@ -29,27 +29,19 @@ F1 App - Frontend is one half of the F1 application designed to allow F1 fans to
 ## <a name="installationinstructions/gettingstarted"></a>INSTALLATION INSTRUCTIONS/GETTING STARTED
 * Fork the Frontend Repository 
 
- ![Fork Frontend Repository]()
+ ![Fork Frontend Repository](./src/assets/photos/frontend_repo.png)
 
 * Copy that Repository code 
 
-![Copy Frontend Repository Code]()
-
-* In Terminal, mkdir a directory for your code (**Hint**: it can be called frontend)
-
- ![Create Repo Directory]()
-
-* CD into your directory
-
- ![Cd into Directory]()  
+![Copy Frontend Repository Code](./src/assets/photos/frontend_copy_code.png)
 
 * Clone the Repository to your local machine by typing git clone (+url) and hit enter 
 
- ![Create Repo Directory]()
+ ![Create Repo Directory](./src/assets/photos/frontend%20git%20clone.png)
 
 * Once the repository has been cloned, cd into it and `npm install` to download all dependencies
 
- ![NPM Install]()
+ ![NPM Install](./src/assets/photos/frontend%20npm%20i%20.png)
  
 * This should download any and all dependencies affliated with the file, however, if it does not, `npm i` the following dependencies: 
         - axios 
@@ -58,13 +50,17 @@ F1 App - Frontend is one half of the F1 application designed to allow F1 fans to
         - react-router-dom
         - react-toastify
 
- ![Downloading Dependencies Individually]()
+ ![Downloading Dependencies Individually](./src/assets/photos/npm%20i%20dependencies%20.png)
 
 * Once downloaded, start the server by typing `npm run dev` into the IDE's terminal 
 
 * A working server will feature a messsage such as the example below: 
 
  ![Frontend React server Working](./src/assets/photos/frontend_server_working.png)
+
+ Click the localhost:5173 (or applicable number) link to take you to the main page:
+
+ ![Frontend HomePage](./src/assets/photos/F1_Homepage.png) 
 
 ## <a name="deployedfrontend"></a>DEPLOYED FRONTEND
 The Frontend of the F1 App can be accessed via this link: [https://main--f1frontendd.netlify.app/] (https://main--f1frontendd.netlify.app/) 

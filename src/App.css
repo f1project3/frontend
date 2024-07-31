@@ -122,7 +122,7 @@ padding: 0px 20px 10px 10px;
   place-items: end;
  }
 
- .team{
+ .team, .driver, .following, .noFaves{
   font-family: 'Formula1';
 padding: 40px; 
  }
