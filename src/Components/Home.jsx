@@ -7,7 +7,7 @@ import TeamDetail from './TeamDetail';
 import DriverList from './DriverList';
 import DriverDetails from './DriverDetails';
 import Following from './Following';
-import Header from './Header'
+import Header from './Header';
 import AddTeam from './AddTeam';
 import AddDriver from './AddDriver';
 import UpdateTeamForm from './UpdateTeamForm';
@@ -82,7 +82,6 @@ const Home = () => {
 
   const updateTeam = async (updatedTeam) => {
     try {
-      console.log(updatedTeam)
       const response = await fetch(`http://localhost:4000/teams/${updatedTeam._id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -101,7 +100,6 @@ const Home = () => {
       toast.error('Error updating team');
     }
   };
-  
 
   const updateDriver = async (updatedDriver) => {
     const response = await fetch(`http://localhost:4000/driver/${updatedDriver._id}`, {
@@ -113,6 +111,42 @@ const Home = () => {
     console.log('Updated driver response:', data);
     setDrivers(drivers.map((driver) => (driver._id === data._id ? data : driver)));
     toast.success('Driver updated successfully!');
+  };
+
+  const deleteTeam = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:4000/teams/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        setTeams(teams.filter((team) => team._id !== id));
+        toast.success('Team deleted successfully!');
+      } else {
+        console.error('Failed to delete team');
+        toast.error('Failed to delete team');
+      }
+    } catch (error) {
+      console.error('Error deleting team:', error);
+      toast.error('Error deleting team');
+    }
+  };
+
+  const deleteDriver = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:4000/driver/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        setDrivers(drivers.filter((driver) => driver._id !== id));
+        toast.success('Driver deleted successfully!');
+      } else {
+        console.error('Failed to delete driver');
+        toast.error('Failed to delete driver');
+      }
+    } catch (error) {
+      console.error('Error deleting driver:', error);
+      toast.error('Error deleting driver');
+    }
   };
 
   if (loading) {
@@ -129,7 +163,7 @@ const Home = () => {
           element={
             <>
               <AddTeam addTeam={addTeam} />
-              <TeamList addFavorite={addFavorite} teams={teams} />
+              <TeamList addFavorite={addFavorite} teams={teams} deleteTeam={deleteTeam} />
             </>
           }
         />
@@ -139,7 +173,7 @@ const Home = () => {
           element={
             <>
               <AddDriver addDriver={addDriver} />
-              <DriverList addFavorite={addFavorite} drivers={drivers} />
+              <DriverList addFavorite={addFavorite} drivers={drivers} deleteDriver={deleteDriver} />
             </>
           }
         />

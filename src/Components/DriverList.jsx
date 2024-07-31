@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const DriverList = ({ addFavorite, drivers }) => {
+const DriverList = ({ addFavorite, drivers, deleteDriver }) => {
   const [filteredDrivers, setFilteredDrivers] = useState([]);
 
   useEffect(() => {
@@ -12,6 +12,10 @@ const DriverList = ({ addFavorite, drivers }) => {
     addFavorite('drivers', driver);
   };
 
+  const handleDeleteDriver = (id) => {
+    deleteDriver(id);
+  };
+
   const loaded = () => {
     return filteredDrivers.map((driver, index) => (
       <div key={index} className="driver">
@@ -19,6 +23,7 @@ const DriverList = ({ addFavorite, drivers }) => {
           <h1>{driver.full_name}</h1>
         </Link>
         <button onClick={() => handleAddFavorite(driver)}>Add to Favorites</button>
+        <button onClick={() => handleDeleteDriver(driver._id)}>Delete Driver</button>
       </div>
     ));
   };
