@@ -25,5 +25,4 @@ const TeamList = ({ addFavorite, teams }) => {
 
   return <section>{filteredTeams.length ? loaded() : <h1>Loading...</h1>}</section>;
 };
-
 export default TeamList;

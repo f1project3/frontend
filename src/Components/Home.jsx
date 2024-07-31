@@ -7,6 +7,7 @@ import TeamDetail from './TeamDetail';
 import DriverList from './DriverList';
 import DriverDetails from './DriverDetails';
 import Following from './Following';
+import Header from './Header'
 import AddTeam from './AddTeam';
 import AddDriver from './AddDriver';
 import UpdateTeamForm from './UpdateTeamForm';
