@@ -1,27 +1,29 @@
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+const TeamList = ({ addFavorite, teams }) => {
+  const [filteredTeams, setFilteredTeams] = useState([]);
 
+  useEffect(() => {
+    setFilteredTeams(teams);
+  }, [teams]);
 
+  const handleAddFavorite = (team) => {
+    addFavorite('teams', team);
+  };
 
-const TeamList = ({ teams, addFavorite }) => {
   const loaded = () => {
-    return teams.map((team, index) => (
-      <div key={index} className="teamList">
+    return filteredTeams.map((team, index) => (
+      <div key={index} className="team">
         <Link to={`/teams/${team.team_name}`}>
           <h1>{team.team_name}</h1>
         </Link>
-        <button onClick={() => addFavorite('teams', team)}>Add to Favorites</button>
+        <button onClick={() => handleAddFavorite(team)}>Add to Favorites</button>
       </div>
     ));
   };
 
-  const loading = () => {
-    return <h1>Loading...</h1>;
-  };
-
-  return <section>{teams ? loaded() : loading()}</section>;
+  return <section>{filteredTeams.length ? loaded() : <h1>Loading...</h1>}</section>;
 };
 
 export default TeamList;
-
