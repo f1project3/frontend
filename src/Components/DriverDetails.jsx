@@ -1,17 +1,42 @@
-import { useParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-const DriverDetails = ({ drivers }) => {
+const DriverDetails = () => {
   const { id } = useParams();
-  const driver = drivers.find((driver) => driver._id === id);
+  const [driver, setDriver] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDriver = async () => {
+      try {
+        const response = await fetch(`https://localhost:4000/[driver]/${id}`); 
+        setDriver(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching driver data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchDriver();
+  }, [id]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!driver) {
+    return <div>Driver not found</div>;
+  }
 
   return (
-    <div>
-      <h1>{driver.full_name}</h1>
-      <img src={driver.headshot_url} alt={driver.full_name} />
-      <h3>{driver.team}</h3>
-      <Link to={`/drivers/update/${driver._id}`}>
-        <button>Update Driver</button>
-      </Link>
+    <div className="driver-details">
+      <h1>{driver.name}</h1>
+      <img src={driver.image} alt={driver.name} />
+      <p>Team: {driver.team}</p>
+      <p>Country: {driver.country}</p>
+      <p>Podiums: {driver.podiums}</p>
+      <p>Points: {driver.points}</p>
     </div>
   );
 };

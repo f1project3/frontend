@@ -131,24 +131,6 @@ const Home = () => {
     }
   };
 
-  const deleteDriver = async (id) => {
-    try {
-      const response = await fetch(`http://localhost:4000/driver/${id}`, {
-        method: 'DELETE',
-      });
-      if (response.ok) {
-        setDrivers(drivers.filter((driver) => driver._id !== id));
-        toast.success('Driver deleted successfully!');
-      } else {
-        console.error('Failed to delete driver');
-        toast.error('Failed to delete driver');
-      }
-    } catch (error) {
-      console.error('Error deleting driver:', error);
-      toast.error('Error deleting driver');
-    }
-  };
-
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -173,7 +155,7 @@ const Home = () => {
           element={
             <>
               <AddDriver addDriver={addDriver} />
-              <DriverList addFavorite={addFavorite} drivers={drivers} deleteDriver={deleteDriver} />
+              <DriverList addFavorite={addFavorite} drivers={drivers} />
             </>
           }
         />

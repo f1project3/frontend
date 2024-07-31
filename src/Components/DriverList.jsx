@@ -1,34 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-const DriverList = ({ addFavorite, drivers, deleteDriver }) => {
-  const [filteredDrivers, setFilteredDrivers] = useState([]);
+const DriverList = ({ addFavorite }) => {
+  const [drivers, setDrivers] = useState(null);
+  const URL = "http://localhost:4000/driver/";
+
+  const getDrivers = async () => {
+    const response = await fetch(URL);
+    const data = await response.json();
+    setDrivers(data.data);
+  };
 
   useEffect(() => {
-    setFilteredDrivers(drivers);
-  }, [drivers]);
-
-  const handleAddFavorite = (driver) => {
-    addFavorite('drivers', driver);
-  };
-
-  const handleDeleteDriver = (id) => {
-    deleteDriver(id);
-  };
+    getDrivers();
+  }, []);
 
   const loaded = () => {
-    return filteredDrivers.map((driver, index) => (
+    return drivers.map((driver, index) => (
       <div key={index} className="driver">
         <Link to={`/driver/${driver._id}`}>
           <h1>{driver.full_name}</h1>
         </Link>
-        <button onClick={() => handleAddFavorite(driver)}>Add to Favorites</button>
-        <button onClick={() => handleDeleteDriver(driver._id)}>Delete Driver</button>
+        <img src={driver.headshot_url} alt={driver.full_name} />
+        <h3>{driver.team}</h3>
+        <button onClick={() => addFavorite('drivers', driver)}>Add to Favorites</button>
       </div>
     ));
   };
 
-  return <section>{filteredDrivers.length ? loaded() : <h1>Loading...</h1>}</section>;
+  const loading = () => {
+    return <h1>Loading...</h1>;
+  };
+
+  return <section>{drivers ? loaded() : loading()}</section>;
 };
 
 export default DriverList;
