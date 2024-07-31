@@ -1,31 +1,83 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
-const TeamDetail = (props) => {
-  const params = useParams();
-  const id = params.id;
+const TeamDetail = ({ teams }) => {
+  const { id } = useParams();
   const [team, setTeam] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [updatedTeam, setUpdatedTeam] = useState({
+    team_name: '',
+  });
 
   const URL = `http://localhost:4000/teams/${id}`;
 
+  const navigate = useNavigate();
+
   const getTeam = async () => {
-    const response = await fetch(URL);
-    const data = await response.json();
-    setTeam(data.data);
+    try {
+      const response = await fetch(URL);
+      if (!response.ok) throw new Error('Team not found');
+      const data = await response.json();
+      setTeam(data.data);
+      setUpdatedTeam({
+        team_name: data.data.team_name,
+      });
+    } catch (error) {
+      console.error("Error fetching team:", error);
+    }
   };
 
   useEffect(() => {
     getTeam();
-  }, []);
+  }, [id]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUpdatedTeam((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(URL, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedTeam),
+      });
+      if (!response.ok) throw new Error('Failed to update team');
+      const data = await response.json();
+      setTeam(data.data);
+      setIsEditing(false);
+      console.log('Update successful:', data);
+      navigate("/teams");
+    } catch (error) {
+      console.error("Error updating team:", error);
+    }
+  };
 
   const loaded = () => {
     return (
       <div className="team">
-        <h1>{team.name}</h1>
-        <h2>{team.principal}</h2>
-        <img src={team.logo} alt={team.name} />
-        <h3>{team.base}</h3>
-        <p>{team.championships}</p>
+        <h1>{team.team_name}</h1>
+        <button onClick={() => setIsEditing(true)}>Edit Team</button>
+        {isEditing && (
+          <form onSubmit={handleUpdate}>
+            <label>
+              Team Name:
+              <input
+                type="text"
+                name="team_name"
+                value={updatedTeam.team_name}
+                onChange={handleInputChange}
+                required
+              />
+            </label>
+            <button type="submit">Update Team</button>
+          </form>
+        )}
       </div>
     );
   };

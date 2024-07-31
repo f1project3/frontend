@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const DriverList = () => {
+const DriverList = ({ addFavorite }) => {
   const [drivers, setDrivers] = useState(null);
-
-  const URL = "http://localhost:4000/drivers/";
+  const URL = "http://localhost:4000/driver/";
 
   const getDrivers = async () => {
     const response = await fetch(URL);
@@ -17,13 +16,14 @@ const DriverList = () => {
   }, []);
 
   const loaded = () => {
-    return drivers.map((driver) => (
-      <div key={driver._id} className="driver">
-        <Link to={`/drivers/${driver._id}`}>
-          <h1>{driver.name}</h1>
+    return drivers.map((driver, index) => (
+      <div key={index} className="driver">
+        <Link to={`/driver/${driver._id}`}>
+          <h1>{driver.full_name}</h1>
         </Link>
-        <img src={driver.image} alt={driver.name} />
+        <img src={driver.headshot_url} alt={driver.full_name} />
         <h3>{driver.team}</h3>
+        <button onClick={() => addFavorite('drivers', driver)}>Add to Favorites</button>
       </div>
     ));
   };

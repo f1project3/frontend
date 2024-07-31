@@ -1,14 +1,27 @@
+@font-face {
+  font-family: 'Formula1';
+  src: url('/frontend/src/assets/fonts/Formula1-Regular.otf');
+}
+
 body {
-  margin: 0;
+  /* margin: 0; */
   font-family: Arial, sans-serif;
 }
 
+#welcome{
+  font-family: 'Formula1';
+  font-size: xx-large;
+  font-weight: 550;
+display: grid; 
+place-items: center;
+}
+
 .navbar {
-  background-color: #333;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  width: 100%;
+  background-color: rgb(225, 13, 13);
+  overflow: hidden; 
+  position: relative; 
+  top: 0; 
+  max-width: 100%;
   z-index: 1000;
 }
 
@@ -16,12 +29,13 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  display: flex;
+
   justify-content: space-around;
 }
 
 .navbar li {
   display: inline;
+  justify-content: center;
 }
 
 .navbar li a {
@@ -32,9 +46,77 @@ body {
 }
 
 .navbar li a:hover {
-  background-color: #111;
+  background-color: rgb(255, 255, 255);
 }
 
 .main-content {
   padding-top: 60px; 
 }
+
+.Toastify__toast--error {
+  background-color: red;
+}
+
+.favorite-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.favorite-item h3 {
+  margin: 0;
+}
+
+.favorite-item button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #ff4c4c;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.favorite-item button:hover {
+  background-color: #ff1a1a;
+}
+
+.containerOne{
+display:grid; 
+grid-auto-columns: 1fr;
+grid-template-rows: 100px 50px 100px ;
+padding: 0px 20px 10px 10px;
+
+}
+
+.containerOne > #favButton{
+ display: grid; 
+ place-items: end;
+
+}
+
+.header {
+grid-column-start: 1;
+grid-column-end: 11;
+}
+
+.teamList{
+  display: grid; 
+  padding: 20px 20px 10px 20px; 
+  /* font-family: 'Formula1-Regular'; */
+}
+
+.containerFour{
+display: grid; 
+grid-auto-columns: 2fr;
+grid-template-rows: 50px 50px 100px;
+padding: 0px 20px 10px 10px;
+}
+
+.containerFour > #faveDriver{
+  display: grid; 
+  place-items: end;
+ }

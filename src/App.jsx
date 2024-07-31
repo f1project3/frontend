@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./Components/Header";
 import Navbar from "./Components/Navbar";
-import Home from "./pages/Home";
+import Home from "./Components/Home";
 
 function App() {
   return (

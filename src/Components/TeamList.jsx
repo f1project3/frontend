@@ -1,38 +1,34 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const TeamList = () => {
-  const [teams, setTeams] = useState(null);
-
-  const URL = "http://localhost:4000/teams/";
-
-  const getTeams = async () => {
-    const response = await fetch(URL);
-    const data = await response.json();
-    setTeams(data.data);
-  };
+const TeamList = ({ addFavorite, teams, deleteTeam }) => {
+  const [filteredTeams, setFilteredTeams] = useState([]);
 
   useEffect(() => {
-    getTeams();
-  }, []);
+    setFilteredTeams(teams);
+  }, [teams]);
+
+  const handleAddFavorite = (team) => {
+    addFavorite('teams', team);
+  };
+
+  const handleDelete = (id) => {
+    deleteTeam(id);
+  };
 
   const loaded = () => {
-    return teams.map((team) => (
-      <div key={team._id} className="team">
+    return filteredTeams.map((team, index) => (
+      <div key={index} className="team">
         <Link to={`/teams/${team._id}`}>
-          <h1>{team.name}</h1>
+          <h1>{team.team_name}</h1>
         </Link>
-        <img src={team.logo} alt={team.name} />
-        <h3>{team.principal}</h3>
+        <button onClick={() => handleAddFavorite(team)}>Add to Favorites</button>
+        <button onClick={() => handleDelete(team._id)}>Delete Team</button>
       </div>
     ));
   };
 
-  const loading = () => {
-    return <h1>Loading...</h1>;
-  };
-
-  return <section>{teams ? loaded() : loading()}</section>;
+  return <section>{filteredTeams.length ? loaded() : <h1>Loading...</h1>}</section>;
 };
 
 export default TeamList;

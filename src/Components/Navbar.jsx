@@ -1,23 +1,29 @@
+import React from 'react';
 import { Link } from "react-router-dom";
+
 
 const Navbar = () => {
   return (
+    <div className="header">
+    <div id="navigationBar">
     <nav className="navbar">
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
+      <ul className="nav">
+        <li className="nav-item">
+          <Link to="/" className="nav-link home" aria-current="page" href="#">Home</Link>
         </li>
-        <li>
-          <Link to="/teams">Teams</Link>
+        <li className="nav-item">
+          <Link to="/teams" className="nav-link teams" href="#">Teams</Link>
         </li>
-        <li>
-          <Link to="/drivers">Drivers</Link>
+        <li className="nav-item">
+          <Link to="/driver" className="nav-link drivers" href="#">Drivers</Link>
         </li>
-        <li>
-          <Link to="/standings">Standings</Link>
+        <li className="nav-item"> 
+          <Link to="/following" className="nav-link following" href="#">Following</Link>
         </li>
       </ul>
     </nav>
+    </div>
+    </div>
   );
 };
 
