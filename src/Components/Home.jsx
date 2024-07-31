@@ -7,6 +7,7 @@ import TeamDetail from './TeamDetail';
 import DriverList from './DriverList';
 import DriverDetails from './DriverDetails';
 import Following from './Following';
+import Header from './Header'
 
 const Home = () => {
   const [teams, setTeams] = useState([]);
@@ -61,7 +62,7 @@ const Home = () => {
     <main>
       <ToastContainer />
       <Routes>
-        <Route path="/" element={<div>Welcome to the F1 App</div>} />
+        <Route path="/" element={<div id="welcome">Welcome to the F1 App</div>} />
         <Route path="/teams" element={<TeamList teams={teams} addFavorite={addFavorite} />} />
         <Route path="/teams/:id" element={<TeamDetail teams={teams} />} />
         <Route path="/driver" element={<DriverList drivers={drivers} addFavorite={addFavorite} />} />

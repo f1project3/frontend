@@ -11,18 +11,23 @@ const Following = ({ favorites, removeFavorite }) => {
             <Link to={`/teams/${team.team_name}`}>
               <h1>{team.team_name}</h1>
             </Link>
-            <button onClick={() => removeFavorite('teams', team._id)}>Remove from favorites</button>
+            <button onClick={() => removeFavorite('teams', team._id)}>Remove from Favorites</button>
           </div>
         ))}
+        <div className="containerFour">
+        <div id="faveDriver">
         <h1>Favorite Drivers</h1>
         {favorites.drivers.map((driver, index) => (
           <div key={index} className="driver">
             <Link to={`/driver/${driver._id}`}>
               <h1>{driver.full_name}</h1>
             </Link>
-            <button onClick={() => removeFavorite('drivers', driver._id)}>Remove from favorites</button>
+            <button onClick={() => removeFavorite('drivers', driver._id)}>Remove from Favorites</button>
           </div>
+          
         ))}
+        </div>
+        </div>
       </div>
     );
   };

@@ -1,20 +1,23 @@
+@font-face {
+  font-family: 'Formula1';
+  src: url('/frontend/src/assets/fonts/Formula1-Regular.otf');
+}
 
 body {
-  margin: 0;
+  /* margin: 0; */
   font-family: Arial, sans-serif;
 }
 
-.logoNav{
-  max-width: max-content;
-}
-.d-lg-flex {
-  max-width: fit-content;
-  max-height: fit-content;
-
+#welcome{
+  font-family: 'Formula1';
+  font-size: xx-large;
+  font-weight: 550;
+display: grid; 
+place-items: center;
 }
 
 .navbar {
-  background-color: red;
+  background-color: rgb(225, 13, 13);
   overflow: hidden; 
   position: relative; 
   top: 0; 
@@ -26,7 +29,7 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  display: flex;
+
   justify-content: space-around;
 }
 
@@ -82,3 +85,39 @@ body {
   background-color: #ff1a1a;
 }
 
+.containerOne{
+display:grid; 
+grid-auto-columns: 1fr;
+grid-template-rows: 100px 50px 100px ;
+padding: 0px 20px 10px 10px;
+
+}
+
+.containerOne > #favButton{
+ display: grid; 
+ place-items: end;
+
+}
+
+.header {
+grid-column-start: 1;
+grid-column-end: 11;
+}
+
+.teamList{
+  display: grid; 
+  padding: 20px 20px 10px 20px; 
+  /* font-family: 'Formula1-Regular'; */
+}
+
+.containerFour{
+display: grid; 
+grid-auto-columns: 2fr;
+grid-template-rows: 50px 50px 100px;
+padding: 0px 20px 10px 10px;
+}
+
+.containerFour > #faveDriver{
+  display: grid; 
+  place-items: end;
+ }

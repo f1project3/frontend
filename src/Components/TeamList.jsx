@@ -11,7 +11,11 @@ const TeamList = ({ teams, addFavorite }) => {
         <Link to={`/teams/${team.team_name}`}>
           <h1>{team.team_name}</h1>
         </Link>
+        <div className="containerOne">
+        <div id="favButton">
         <button onClick={() => addFavorite('teams', team)}>Add to Favorites</button>
+        </div>
+        </div>
       </div>
     ));
   };
@@ -22,6 +26,5 @@ const TeamList = ({ teams, addFavorite }) => {
 
   return <section>{teams ? loaded() : loading()}</section>;
 };
-
 export default TeamList;
 
