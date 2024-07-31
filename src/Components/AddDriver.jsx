@@ -13,7 +13,7 @@ const AddDriver = ({ addDriver }) => {
     setTeam('');
     setHeadshotUrl('');
   };
-<div className="newDriver">
+
   return (
     <form onSubmit={handleSubmit}>
       <h2>Add New Driver</h2>
@@ -41,7 +41,7 @@ const AddDriver = ({ addDriver }) => {
       <button type="submit">Add Driver</button>
     </form>
   );
-  </div>
+
 };
 
 export default AddDriver;
