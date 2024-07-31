@@ -7,16 +7,20 @@ F1 App - Frontend is one half of the F1 application designed to allow F1 fans to
 
 ## TABLE OF CONTENTS
 * [Technologies Used](#technologiesused)
+* [Project Management](#projectmanagement)
 * [Features](#features)
 * [Installation Instructions/Getting Started](#installation-instructionsgetting-started)
 * [Deployed Frontend](#deployedfrontend)
 
 ## <a name="technologiesused"></a>TECHNOLOGIES USED: 
 * HTML5 
-* Bootstrap CSS 
+* CSS Grid 
 * JavaScript 
 * React
 * React-Router 
+
+## <a name="projectmanagement"></a>PROJECT MANAGEMENT 
+* Trello: [https://trello.com/b/Dzt5wImz/general-assembly-project-3] (https://trello.com/b/Dzt5wImz/general-assembly-project-3)
 
 ## <a name="features"></a>FEATURES
 * Users can view navigate through header tabs to view F1 drivers and teams
@@ -63,4 +67,4 @@ F1 App - Frontend is one half of the F1 application designed to allow F1 fans to
  ![Frontend React server Working](./src/assets/photos/frontend_server_working.png)
 
 ## <a name="deployedfrontend"></a>DEPLOYED FRONTEND
-The Backend of the F1 App can be accessed via this link: 
+The Frontend of the F1 App can be accessed via this link: [https://main--f1frontendd.netlify.app/] (https://main--f1frontendd.netlify.app/) 
