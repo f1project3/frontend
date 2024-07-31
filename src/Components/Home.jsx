@@ -82,6 +82,7 @@ const Home = () => {
 
   const updateTeam = async (updatedTeam) => {
     try {
+      console.log(updatedTeam)
       const response = await fetch(`http://localhost:4000/teams/${updatedTeam._id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -122,7 +123,7 @@ const Home = () => {
     <main>
       <ToastContainer />
       <Routes>
-        <Route path="/" element={<div>Welcome to the F1 App</div>} />
+        <Route path="/" element={<div id="welcome">Welcome to the F1 App</div>} />
         <Route
           path="/teams"
           element={

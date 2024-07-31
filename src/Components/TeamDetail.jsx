@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
-const TeamDetail = () => {
+
+const TeamDetail = (teams) => {
   const { id } = useParams();
-  const [team, setTeam] = useState(null);
+  const [team, setTeam] = useState(teams);
   const [isEditing, setIsEditing] = useState(false);
   const [updatedTeam, setUpdatedTeam] = useState({
-    name: "",
+    name: '',
   });
 
   const URL = `http://localhost:4000/teams/${id}`;
+
+  const navigate = useNavigate()
 
   const getTeam = async () => {
     try {
@@ -18,7 +21,7 @@ const TeamDetail = () => {
       const data = await response.json();
       setTeam(data.data);
       setUpdatedTeam({
-        name: data.data.name,
+        name: data.team_name,
       });
     } catch (error) {
       console.error("Error fetching team:", error);
@@ -47,9 +50,10 @@ const TeamDetail = () => {
       });
       if (!response.ok) throw new Error('Failed to update team');
       const data = await response.json();
-      setTeam(data.data);
+      setTeam(data);
       setIsEditing(false);
       console.log('Update successful:', data);
+      navigate("/teams")
     } catch (error) {
       console.error("Error updating team:", error);
     }

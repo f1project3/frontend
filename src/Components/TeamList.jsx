@@ -15,7 +15,7 @@ const TeamList = ({ addFavorite, teams }) => {
   const loaded = () => {
     return filteredTeams.map((team, index) => (
       <div key={index} className="team">
-        <Link to={`/teams/${team.team_name}`}>
+        <Link to={`/teams/${team._id}`}>
           <h1>{team.team_name}</h1>
         </Link>
         <button onClick={() => handleAddFavorite(team)}>Add to Favorites</button>
