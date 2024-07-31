@@ -122,7 +122,7 @@ const Home = () => {
     <main>
       <ToastContainer />
       <Routes>
-        <Route path="/" element={<div>Welcome to the F1 App</div>} />
+        <Route path="/" element={<div id="welcome">Welcome to the F1 App</div>} />
         <Route
           path="/teams"
           element={
