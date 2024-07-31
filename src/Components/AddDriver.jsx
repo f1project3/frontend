@@ -41,6 +41,7 @@ const AddDriver = ({ addDriver }) => {
       <button type="submit">Add Driver</button>
     </form>
   );
+
 };
 
 export default AddDriver;
